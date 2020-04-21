@@ -13,7 +13,7 @@
         {
             "type": "node",
             "request": "launch",
-            "name": "Current File",
+            "name": "NodeJS: Current File",
             "program": "${file}",
             "cwd": "${workspaceRoot}",
             "env": {},

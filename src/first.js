@@ -7,8 +7,7 @@ const {
   runAsync
 } = require('./lib/utility');
 const {
-  admincode,
-  apartment
+  admincode
 } = require('./lib/nedb');
 
 const mongodb = require('./lib/mongodb');
@@ -54,7 +53,7 @@ async function transaction(LAWD_CD, DEAL_YMD) {
   await Apartment.create(arr.map(val => {
     return {
       'apartment': _str(val['아파트']),
-      'dealedAt': new Date(val['년'], val['월'], val['일']).toLocaleDateString(),
+      'dealedAt': `${_num(val['년'])}.${_c(val['월'])}.${_c(val['일'])}`,
       'price': _num(val['거래금액'].trim().replace(',', '')),
       'floor': _num(val['층']),
       'landAddress': _str(val['지번']),
@@ -63,20 +62,23 @@ async function transaction(LAWD_CD, DEAL_YMD) {
       'localCode': _num(val['지역코드']),
       'address_1': _str(code['시도명']),
       'address_2': _str(code['시군구명']),
-      'address_3': _str(code['읍면동명']),
-      'address_4': _str(code['동리명']),
+      'address_3': _str(val['법정동']),
     };
   }));
 
-  console.log(`[${LAWD_CD}|${DEAL_YMD}|${code['시도명']}|${code['시군구명']}|${code['읍면동명']}] ${res.response.body.totalCount} | ${totalCount += res.response.body.totalCount}`);
+  console.log(`[${LAWD_CD}|${DEAL_YMD}|${code['시도명']}|${code['시군구명']}] ${res.response.body.totalCount} | ${totalCount += res.response.body.totalCount}`);
 }
 
 function _str(val) {
-  return val ? val.toString() : val;
+  return val ? val.toString().trim() : val;
 }
 
 function _num(val) {
   return val ? Number(val) : val;
+}
+
+function _c(val) {
+  return val < 10 ? '0' + val : val.toString();
 }
 
 function yearMonths() {
@@ -124,47 +126,57 @@ async function getAll(args) {
   console.log(`transaction count : ${yms.length * codes.length}`);
 
   let index = 0;
+  let failed = true;
   for (const code of codes) {
     console.log(`code index : ${++index} / ${codes.length}`);
 
     for (const ym of yms) {
-      if (code <= args[0] && ym <= args[1]) continue;
+      if (args[0] && code <= args[0] && ym <= args[1]) continue;
 
-      await transaction(code, ym);
+      failed = true;
+      while (failed) {
+        try {
+          await transaction(code, ym);
+          failed = false;
+        } catch (e) {
+          console.error(e);
+          failed = true;
+        }
+      }
     }
   }
 }
 
-runAsync(getAll, '47110', '200002');
+runAsync(getAll, '50130', '202012');
 
 // runAsync(async () => {
 //   const {
 //     Apartment
 //   } = await mongodb.init();
 
-//   const curr = await apartment.find({}).sort({
-//     localCode: 1
-//   }).exec();
+//   //   const curr = await apartment.find({}).sort({
+//   //     localCode: 1
+//   //   }).exec();
 
-//   let index = 0;
-//   let items = [];
+//   //   let index = 0;
+//   //   let items = [];
 
-//   for (const item of curr) {
-//     delete item['_id'];
-//     item['floor'] = Number(item['floor']);
+//   //   for (const item of curr) {
+//   //     delete item['_id'];
+//   //     item['floor'] = Number(item['floor']);
 
-//     items.push(item);
+//   //     items.push(item);
 
-//     console.log(`${++index} / ${curr.length}`);
+//   //     console.log(`${++index} / ${curr.length}`);
 
-//     if (index % 20000 === 0 || index === curr.length) {
-//       await Apartment.create(items);
-//       console.log(`SAVED --------------------------------------------------------------`);
-//       items = [];
-//     }
-//   }
+//   //     if (index % 20000 === 0 || index === curr.length) {
+//   //       await Apartment.create(items);
+//   //       console.log(`SAVED --------------------------------------------------------------`);
+//   //       items = [];
+//   //     }
+//   //   }
 
-//   // await Apartment.deleteMany({});
+//   await Apartment.deleteMany({});
 
 //   console.log(`doc count : ${await Apartment.countDocuments({})}`);
 //   await mongodb.disconnect();
@@ -181,6 +193,20 @@ runAsync(getAll, '47110', '200002');
 //   });
 
 //   console.log(res);
+
+//   await mongodb.disconnect();
+// });
+
+// runAsync(async () => {
+//   const {
+//     Apartment
+//   } = await mongodb.init();
+
+//   const res = await Apartment.findOne({
+//     address_2: '용인시 수지구'
+//   });
+
+//   console.log(JSON.stringify(res, 2, null));
 
 //   await mongodb.disconnect();
 // });

@@ -25,7 +25,6 @@ async function init() {
       address_1: String,
       address_2: String,
       address_3: String,
-      address_4: String,
     });
 
     mongoose.model('Apartment', ApartmentSchema);
