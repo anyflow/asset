@@ -1,0 +1,11 @@
+{
+    "python.pythonPath": "/Users/anyflow/virtualenv/jupyter/bin/python",
+    "python.linting.enabled": true,
+    "python.linting.pylintEnabled": true,
+    "python.linting.pycodestyleEnabled": true,
+    "python.analysis.disabled": [],
+    "python.autoComplete.addBrackets": true,
+    "python.autoComplete.extraPaths": ["/Users/anyflow/workspace/realty/src"],
+    "python.analysis.openFilesOnly": false,
+    "python.jediEnabled": false,
+}
