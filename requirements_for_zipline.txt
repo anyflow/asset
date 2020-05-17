@@ -1,0 +1,9 @@
+autopep8
+pylint
+jupyter
+numpy
+pandas==0.22
+matplotlib
+backtrader
+pandas_datareader
+zipline

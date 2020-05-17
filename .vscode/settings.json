@@ -1,5 +1,5 @@
 {
-    "python.pythonPath": "/Users/anyflow/virtualenv/asset/bin/python",
+    "python.pythonPath": "/Users/anyflow/virtualenv/asset_zipline/bin/python",
     "python.linting.enabled": true,
     "python.linting.pylintEnabled": true,
     "python.linting.pycodestyleEnabled": true,
