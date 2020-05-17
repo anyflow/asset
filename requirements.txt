@@ -1,5 +1,6 @@
 autopep8
 pylint
+pycodestyle
 jupyter
 numpy
 pandas
@@ -7,3 +8,4 @@ matplotlib
 backtrader
 pandas_datareader
 yfinance
+backtrader

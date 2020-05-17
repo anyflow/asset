@@ -1,11 +1,16 @@
 {
-    "python.pythonPath": "/Users/anyflow/virtualenv/asset_zipline/bin/python",
+    "python.pythonPath": "/Users/anyflow/virtualenv/asset/bin/python",
     "python.linting.enabled": true,
     "python.linting.pylintEnabled": true,
-    "python.linting.pycodestyleEnabled": true,
+    "python.linting.pycodestyleEnabled": false,
     "python.analysis.disabled": [],
     "python.autoComplete.addBrackets": true,
-    "python.autoComplete.extraPaths": ["/Users/anyflow/workspace/asset/src"],
+    "python.autoComplete.extraPaths": ["/Users/anyflow/workspace/asset/src", "/Users/anyflow/virtualenv/asset/lib/python3.7/site-packages"],
     "python.analysis.openFilesOnly": false,
-    "python.jediEnabled": false,
+    "python.jediEnabled": true,
+    "cSpell.words": [
+        "pfast",
+        "pslow"
+    ],
+    "python.languageServer": "Jedi",
 }
