@@ -1,16 +1,28 @@
 {
     "python.pythonPath": "/Users/anyflow/virtualenv/asset/bin/python",
-    "python.linting.enabled": true,
-    "python.linting.pylintEnabled": true,
-    "python.linting.pycodestyleEnabled": false,
-    "python.analysis.disabled": [],
-    "python.autoComplete.addBrackets": true,
-    "python.autoComplete.extraPaths": ["/Users/anyflow/workspace/asset/src", "/Users/anyflow/virtualenv/asset/lib/python3.7/site-packages"],
-    "python.analysis.openFilesOnly": false,
-    "python.jediEnabled": true,
-    "cSpell.words": [
-        "pfast",
-        "pslow"
+    "python.autoComplete.extraPaths": [
+        "/Users/anyflow/workspace/asset/src",
+        "/Users/anyflow/virtualenv/asset/lib/python3.7/site-packages"
     ],
+    "python.terminal.activateEnvironment": true,
+    "python.linting.enabled": true,
+    "python.linting.flake8Enabled": true,
+    "python.autoComplete.addBrackets": true,
     "python.languageServer": "Jedi",
+    "python.formatting.provider": "black",
+    "[python]": {
+        "editor.formatOnSave": true,
+        "editor.rulers": [
+            88
+        ]
+    },
+    "vsintellicode.python.completionsEnabled": true,
+    "editor.codeLens": true,
+    "editor.codeActionsOnSave": {
+        "source.organizeImports": true,
+        "source.fixAll": true
+    },
+    "yaml.format.enable": true,
+    "debug.inlineValues": "auto",
+    "terminal.integrated.tabs.enabled": true,
 }

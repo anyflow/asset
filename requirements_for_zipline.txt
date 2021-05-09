@@ -1,9 +1,8 @@
-autopep8
-pylint
-jupyter
-numpy
-pandas==0.22
-matplotlib
 backtrader
+jupyter
+matplotlib
+numpy
+pandas
 pandas_datareader
+pylint
 zipline
