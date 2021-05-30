@@ -1,0 +1,14 @@
+version: "3.8"
+services:
+  db:
+    container_name: timescaledb
+    hostname: timescaledb
+    image: timescale/timescaledb:latest-pg12
+    command: postgres -c logging_collector=on -c log_destination=stderr -c log_directory=/logs
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_PASSWORD=password
+    volumes:
+      - ./data:/var/lib/postgresql/data
+      - ./logs:/logs

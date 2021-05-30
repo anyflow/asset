@@ -1,10 +1,13 @@
 {
+    "search.exclude": {
+        "/node_modules/**": true
+    },
+    "python.terminal.activateEnvironment": true,
     "python.pythonPath": "/Users/anyflow/virtualenv/asset/bin/python",
     "python.autoComplete.extraPaths": [
         "/Users/anyflow/workspace/asset/src",
         "/Users/anyflow/virtualenv/asset/lib/python3.7/site-packages"
     ],
-    "python.terminal.activateEnvironment": true,
     "python.linting.enabled": true,
     "python.linting.flake8Enabled": true,
     "python.autoComplete.addBrackets": true,
@@ -25,4 +28,26 @@
     "yaml.format.enable": true,
     "debug.inlineValues": "auto",
     "terminal.integrated.tabs.enabled": true,
+    "cSpell.words": [
+        "BBNA",
+        "BGNA",
+        "BKND",
+        "Errno",
+        "Jmes",
+        "Lamda",
+        "Proto",
+        "THINQDATAMART",
+        "Thinq",
+        "boto",
+        "botocore",
+        "dateutil",
+        "gitlint",
+        "jmespath",
+        "noqa",
+        "thinqmodel",
+        "uxinfos",
+        "vsintellicode",
+        "wkfb"
+    ],
+    "python.linting.pylintEnabled": false,
 }

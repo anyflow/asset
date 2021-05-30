@@ -1,7 +1,7 @@
-version: "2.2"
+version: "3.8"
 services:
   elasticsearch:
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.8.1
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.12.1
     container_name: elasticsearch
     environment:
       - xpack.security.enabled=false
@@ -16,14 +16,14 @@ services:
     cap_add:
       - IPC_LOCK
     volumes:
-      - /Users/anyflow/workspace/asset/elasticsearch/data:/usr/share/elasticsearch/data
+      - ./data:/usr/share/elasticsearch/data
     ports:
       - 9200:9200
       - 9300:9300
 
   kibana:
     container_name: kibana
-    image: docker.elastic.co/kibana/kibana:7.8.1
+    image: docker.elastic.co/kibana/kibana:7.12.1
     environment:
       - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
     ports:
