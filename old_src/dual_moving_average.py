@@ -15,8 +15,12 @@ def handle_data(context, data):
     # Compute averages
     # data.history() has to be called with the same params
     # from above and returns a pandas dataframe.
-    short_mavg = data.history(context.asset, 'price', bar_count=100, frequency="1d").mean()
-    long_mavg = data.history(context.asset, 'price', bar_count=300, frequency="1d").mean()
+    short_mavg = data.history(
+        context.asset, 'price', bar_count=100, frequency='1d'
+    ).mean()
+    long_mavg = data.history(
+        context.asset, 'price', bar_count=300, frequency='1d'
+    ).mean()
 
     # Trading logic
     if short_mavg > long_mavg:
@@ -27,6 +31,8 @@ def handle_data(context, data):
         order_target(context.asset, 0)
 
     # Save values for later inspection
-    record(AAPL=data.current(context.asset, 'price'),
-           short_mavg=short_mavg,
-           long_mavg=long_mavg)
+    record(
+        AAPL=data.current(context.asset, 'price'),
+        short_mavg=short_mavg,
+        long_mavg=long_mavg,
+    )

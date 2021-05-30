@@ -1,7 +1,3 @@
-from pprint import pprint
-import matplotlib.pyplot as plt
-import pandas as pd
-
 from lib.mongodb import APARTMENTS
 
 
@@ -14,4 +10,6 @@ def address2s(address1):
 
 
 def address3s(address1, address2):
-    return APARTMENTS.find({'address_1': address1, 'address_2': address2}).distinct('address_3')
+    return APARTMENTS.find({'address_1': address1, 'address_2': address2}).distinct(
+        'address_3'
+    )

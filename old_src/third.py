@@ -1,10 +1,9 @@
 # %%
 
-from pandas_datareader import data as pdr
 import datetime as dt
+
 import yfinance as yf
-import numpy as np
-import pandas as pd
+from pandas_datareader import data as pdr
 
 # %%
 yf.pdr_override()

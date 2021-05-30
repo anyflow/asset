@@ -6,9 +6,9 @@ def invoke(ticker, cash, from_date, to_date=datetime.now(), commission=0.015 * 0
     cerebro = bt.Cerebro()
 
     # 삼성전자의 '005930.KS' 코드를 적용하여 데이터 획득
-    data = bt.feeds.YahooFinanceData(dataname=ticker,
-                                     fromdate=from_date,
-                                     todate=to_date)
+    data = bt.feeds.YahooFinanceData(
+        dataname=ticker, fromdate=from_date, todate=to_date
+    )
 
     cerebro.adddata(data)
     cerebro.broker.setcash(cash)

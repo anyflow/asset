@@ -1,6 +1,8 @@
 backtrader
 black
 flake8
+
+inflection
 jupyter
 matplotlib
 numpy

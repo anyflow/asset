@@ -1,15 +1,13 @@
 from datetime import datetime
-import backtrader as bt
 
 from lib.backtrander_invoker import invoke
-
 
 TICKERS = {
     'SAMSUNG': '005930.KS',
     'APPLE': 'AAPL',
     'TESLA': 'TSLA',
     'AMAZON': 'AMZN',
-    'S&P500': 'SPY'
+    'S&P500': 'SPY',
 }
 
 

@@ -4,7 +4,7 @@ import backtrader as bt
 class SmaCross(bt.SignalStrategy):  # bt.Strategy를 상속한 class로 생성해야 함.
     params = {
         'pfast': 5,  # period for the fast moving average
-        'pslow': 30  # period for the slow moving average
+        'pslow': 30,  # period for the slow moving average
     }
 
     def __init__(self):

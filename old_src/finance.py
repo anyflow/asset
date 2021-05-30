@@ -1,14 +1,13 @@
 # %%
 
-from quantopian.research import prices, symbols
-import pandas_datareader.data as web
-import pandas as pd
-from matplotlib import style
-import matplotlib.pyplot as plt
 import datetime as dt
-import backtrader as bt
 from datetime import datetime
+
+import matplotlib.pyplot as plt
+import pandas as pd
+import pandas_datareader.data as web
 import yfinance as yf
+from quantopian.research import prices, symbols
 
 samsung_electronics = yf.Ticker('005930.KS')
 
@@ -56,10 +55,6 @@ aapl_sma20 = aapl_close.rolling(20).mean()
 aapl_sma50 = aapl_close.rolling(50).mean()
 
 # Combine results into a pandas DataFrame and plot
-pd.DataFrame({
-    'AAPL': aapl_close,
-    'SMA20': aapl_sma20,
-    'SMA50': aapl_sma50
-}).plot(
+pd.DataFrame({'AAPL': aapl_close, 'SMA20': aapl_sma20, 'SMA50': aapl_sma50}).plot(
     title='AAPL Close Price / SMA Crossover'
 )
